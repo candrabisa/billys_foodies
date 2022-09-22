@@ -1,10 +1,8 @@
 import 'dart:async';
 
-import 'package:billys_foodies/providers/restaurant_provider.dart';
-import 'package:billys_foodies/ui/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:provider/provider.dart';
+import 'package:billys_foodies/ui/pages/home_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -18,21 +16,15 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
+    super.initState();
     Timer(
-      const Duration(seconds: 5),
+      const Duration(seconds: 3),
       () => Navigator.pushNamedAndRemoveUntil(
         context,
         HomePage.routeName,
         (route) => false,
       ),
     );
-    getRestaurantList();
-    super.initState();
-  }
-
-  getRestaurantList() async {
-    await Provider.of<RestaurantProvider>(context, listen: false)
-        .getRestaurant(context);
   }
 
   @override
@@ -41,9 +33,9 @@ class _SplashPageState extends State<SplashPage> {
       backgroundColor: Colors.white,
       body: Center(
         child: Lottie.asset(
-          'assets/json/foodies.json',
+          'assets/anims/foodies.json',
           width: MediaQuery.of(context).size.width * .6,
-          repeat: false,
+          repeat: true,
         ),
       ),
     );

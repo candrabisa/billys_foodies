@@ -1,14 +1,15 @@
-import 'package:billys_foodies/ui/pages/restaurant_detail_page.dart';
 import 'package:flutter/material.dart';
-import 'package:billys_foodies/models/restaurant_model.dart';
-import 'package:billys_foodies/const/style.dart';
+import '../../const/common.dart';
+import '../../data/models/restaurant_result_model.dart';
+import '../../const/style.dart';
+import '../../ui/pages/restaurant_detail_page.dart';
 
 class ListRestaurantWidget extends StatelessWidget {
-  final RestaurantModel restaurantModel;
+  final RestaurantElement restaurantElement;
 
   const ListRestaurantWidget({
     Key? key,
-    required this.restaurantModel,
+    required this.restaurantElement,
   }) : super(key: key);
 
   @override
@@ -22,7 +23,7 @@ class ListRestaurantWidget extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => RestaurantDetailPage(
-              restaurantModel: restaurantModel,
+              restaurantId: restaurantElement.id,
             ),
           ),
         );
@@ -40,11 +41,14 @@ class ListRestaurantWidget extends StatelessWidget {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
-                    child: Image.network(
-                      restaurantModel.pictureId,
-                      width: sizeWidth / 3.4,
-                      height: sizeHeight * .1,
-                      fit: BoxFit.cover,
+                    child: Hero(
+                      tag: restaurantElement.pictureId,
+                      child: Image.network(
+                        urlImageSmall + restaurantElement.pictureId,
+                        width: sizeWidth / 3.4,
+                        height: sizeHeight * .1,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -56,7 +60,7 @@ class ListRestaurantWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          restaurantModel.name,
+                          restaurantElement.name,
                           style: TextStyle(
                             color: kPrimaryColor,
                             fontSize: 16.0,
@@ -73,7 +77,7 @@ class ListRestaurantWidget extends StatelessWidget {
                             ),
                             const SizedBox(width: 3.0),
                             Text(
-                              restaurantModel.city,
+                              restaurantElement.city,
                               style: TextStyle(
                                 color: kGreyColor,
                                 fontSize: 12.0,
@@ -91,7 +95,7 @@ class ListRestaurantWidget extends StatelessWidget {
                               color: kSecondaryColor,
                             ),
                             Text(
-                              restaurantModel.rating.toString(),
+                              restaurantElement.rating.toString(),
                               style: kBlackTextStyle.copyWith(
                                 fontSize: 14.0,
                                 fontWeight: light,
