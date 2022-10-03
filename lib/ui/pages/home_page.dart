@@ -1,34 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../const/style.dart';
+import '../../common/style.dart';
 import '../../providers/restaurant_list_provider.dart';
-import '../../ui/pages/search_page.dart';
+import '../../utils/result_state.dart';
 import '../widgets/list_restaurant_widget.dart';
 import '../widgets/no_conn_inet_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  static const routeName = '/home-page';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kWhiteColor,
-      appBar: AppBar(
-        title: const Text('Foodies'),
-        backgroundColor: kPrimaryColor,
-        actions: [
-          IconButton(
-            onPressed: () => Navigator.pushNamed(context, SearchPage.routeName),
-            icon: Icon(
-              Icons.search,
-              color: kWhiteColor,
-            ),
-          ),
-        ],
-      ),
       body: Center(
         child: Consumer<RestaurantListProvider>(
           builder: (context, state, _) {
@@ -51,18 +36,18 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Center bodyNoConn(RestaurantListProvider state) {
+  Widget bodyNoConn(RestaurantListProvider state) {
     return Center(
                 child: NoConnectionInternetWidget(msgError: state.message));
   }
 
-  Center bodyNoData(RestaurantListProvider state) {
+  Widget bodyNoData(RestaurantListProvider state) {
     return Center(
       child: Text(state.message),
     );
   }
 
-  ListView bodyHasData(RestaurantListProvider state) {
+  Widget bodyHasData(RestaurantListProvider state) {
     return ListView(
       children: [
         Padding(

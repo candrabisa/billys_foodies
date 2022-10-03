@@ -3,28 +3,27 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import '../../data/models/restaurant_search_model.dart';
 import '../../data/services/api_service.dart';
-
-enum ResultState { loading, noData, hasData, error, noConn }
+import '../utils/result_state.dart';
 
 class RestaurantSearchProvider with ChangeNotifier {
   final ApiService apiService;
-  // final String value;
 
   RestaurantSearchProvider({
     required this.apiService,
-    // this.value = '',
   }) {
     fetchSearchRestaurant(query);
   }
 
   RestaurantSearchModel? _searchModel;
-  ResultState? _state;
-  String _query = '';
-  String _message = '';
-
   RestaurantSearchModel? get searchModel => _searchModel;
+
+  ResultState? _state;
   ResultState? get resultState => _state;
+
+  String _query = '';
   String get query => _query;
+
+  String _message = '';
   String get message => _message;
 
   Future<dynamic> fetchSearchRestaurant(String query) async {

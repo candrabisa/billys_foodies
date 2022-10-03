@@ -1,4 +1,4 @@
-import 'package:billys_foodies/data/models/restaurant_result_model.dart';
+import '../../data/models/restaurant_result_model.dart';
 
 class RestaurantSearchModel {
   final bool error;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:billys_foodies/const/style.dart';
+import 'package:billys_foodies/common/style.dart';
 
 class ListMenuWidget extends StatelessWidget {
   final String menuModel;

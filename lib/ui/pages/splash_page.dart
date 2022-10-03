@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:billys_foodies/ui/pages/home_page.dart';
+
+import '../../helpers/notification_helper.dart';
+import '../../ui/pages/base_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -14,17 +16,16 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  final NotificationHelper notificationHelper = NotificationHelper();
+
   @override
   void initState() {
+    Timer(const Duration(seconds: 3), () {
+      Navigator.pushNamedAndRemoveUntil(
+          context, BasePage.routeName, (route) => false);
+    });
+    notificationHelper.onDidReceiveNotificationResponse;
     super.initState();
-    Timer(
-      const Duration(seconds: 3),
-      () => Navigator.pushNamedAndRemoveUntil(
-        context,
-        HomePage.routeName,
-        (route) => false,
-      ),
-    );
   }
 
   @override

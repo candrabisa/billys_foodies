@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../providers/restaurant_review_provider.dart';
 import '../../utils/show_loading.dart';
 import '../../utils/snackbars.dart';
-import '../../const/style.dart';
+import '../../common/style.dart';
 import '../../data/models/restaurant_model.dart';
 
 class RestaurantReviewsPage extends StatefulWidget {

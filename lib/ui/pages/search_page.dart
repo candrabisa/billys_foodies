@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../const/style.dart';
+import '../../common/style.dart';
 import '../../providers/restaurant_search_provider.dart';
+import '../../utils/result_state.dart';
 import '../widgets/list_restaurant_widget.dart';
 import '../widgets/no_conn_inet_widget.dart';
 

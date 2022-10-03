@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../const/style.dart';
+import '../common/style.dart';
 
 snackBarNoIcon(dynamic context, Color color, String text) {
   ScaffoldMessenger.of(context).showSnackBar(

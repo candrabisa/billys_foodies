@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../data/models/restaurant_model.dart';
 import '../data/services/api_service.dart';
-
-enum ResultState { loading, noData, hasData, error, noConn }
+import '../utils/result_state.dart';
 
 class RestaurantDetailProvider with ChangeNotifier {
   final ApiService apiService;
@@ -19,11 +18,12 @@ class RestaurantDetailProvider with ChangeNotifier {
   }
 
   late RestaurantModel _restaurantModel;
-  late ResultState _state;
-  String _message = '';
-
   RestaurantModel get restaurantModel => _restaurantModel;
+
+  late ResultState _state;
   ResultState get resultState => _state;
+
+  String _message = '';
   String get message => _message;
 
   Future<dynamic> fetchDetailRestaurant(String id) async {

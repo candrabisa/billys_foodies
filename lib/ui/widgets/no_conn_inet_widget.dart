@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:app_settings/app_settings.dart';
-import 'package:billys_foodies/const/style.dart';
+import 'package:billys_foodies/common/style.dart';
 
 class NoConnectionInternetWidget extends StatelessWidget {
   final String msgError;
