@@ -9,9 +9,9 @@ import '../../data/models/restaurant_result_model.dart';
 class ApiService {
   static const String baseUrl = 'https://restaurant-api.dicoding.dev';
 
-  Future<RestaurantResultModel> getRestaurantList() async {
+  Future<RestaurantResultModel> getRestaurantList(http.Client client) async {
     var url = '$baseUrl/list';
-    var response = await http.get(Uri.parse(url));
+    var response = await client.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
       return RestaurantResultModel.fromJson(jsonDecode(response.body));

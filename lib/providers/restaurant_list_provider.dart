@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:http/http.dart'as http;
 
 import '../data/services/api_service.dart';
 import '../data/models/restaurant_result_model.dart';
@@ -27,7 +28,7 @@ class RestaurantListProvider with ChangeNotifier {
   Future<dynamic> fetchAllRestaurant() async {
     try {
       _state = ResultState.loading;
-      final restaurantResult = await apiService.getRestaurantList();
+      final restaurantResult = await apiService.getRestaurantList(http.Client());
       notifyListeners();
 
       if (restaurantResult.restaurants.isEmpty) {
